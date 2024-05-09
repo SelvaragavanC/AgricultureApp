@@ -23,11 +23,16 @@ public class AuthenticationService {
                 .email(registerRequest.getEmail())
                 .build();
         userRepository.save(usr);
-        return new ResponseEntity<>(new RegisterResponse("You are registered Succesfully"), HttpStatusCode.valueOf(200));
+        return new ResponseEntity<>(new RegisterResponse("You are registered Successfully"), HttpStatusCode.valueOf(200));
     }
 
     public boolean isAlreadyRegistered(RegisterRequest registerRequest){
         User user = userRepository.findByEmail(registerRequest.getEmail());
         return user != null;
+    }
+
+    public ResponseEntity<LoginResponse> loginService(LoginRequest loginRequest) {
+        User user = userRepository.findByEmail(loginRequest.getEmail());
+        return new ResponseEntity<>(new LoginResponse(user.getUsername()), HttpStatusCode.valueOf(200));
     }
 }

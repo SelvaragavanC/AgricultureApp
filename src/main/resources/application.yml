@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://agriexpertdb-2024-propert-portal-2024.h.aivencloud.com:12183/AgriExpertMainDB
+    username: avnadmin
+    password: AVNS_AXx6yz90HU1f_nDK7Ic
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
