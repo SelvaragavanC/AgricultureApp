@@ -21,6 +21,7 @@ public class AuthenticationService {
                 .username(registerRequest.getUsername())
                 .password(registerRequest.getPassword())
                 .email(registerRequest.getEmail())
+                .address(registerRequest.getAddress())
                 .build();
         userRepository.save(usr);
         return new ResponseEntity<>(new RegisterResponse("You are registered Successfully"), HttpStatusCode.valueOf(200));
