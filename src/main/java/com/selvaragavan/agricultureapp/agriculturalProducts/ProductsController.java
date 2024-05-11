@@ -1,6 +1,7 @@
 package com.selvaragavan.agricultureapp.agriculturalProducts;
 
 
+import com.selvaragavan.agricultureapp.address.AddressService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +15,12 @@ import java.util.List;
 public class ProductsController {
 
     private final ProductService productService;
+    private final AddressService addressService;
 
     @GetMapping(path = "/get")
-    public ResponseEntity<List<Product>> getProduct(@RequestParam(value = "name", required = false) String name,@RequestParam(value = "address") String address) {
+    public ResponseEntity<List<Product>> getProduct(@RequestParam(value = "name", required = false) String name,@RequestParam(value = "addressId") Integer address) {
         if(address != null){
-            return new ResponseEntity<>(productService.getProductsByUserAddress(address),HttpStatusCode.valueOf(200));
+            return new ResponseEntity<>(productService.getProductsByUserAddress(addressService.getAddressById(address)),HttpStatusCode.valueOf(200));
         }else if (name!=null){
             return new ResponseEntity<>(productService.getProductsByName(name), HttpStatusCode.valueOf(200));
         }else{

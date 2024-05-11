@@ -1,5 +1,7 @@
 package com.selvaragavan.agricultureapp.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.selvaragavan.agricultureapp.address.Address;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,5 +21,9 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private String address;
+
+    @OneToOne
+    @JoinColumn
+    @JsonIgnoreProperties({"id"})
+    private Address address;
 }

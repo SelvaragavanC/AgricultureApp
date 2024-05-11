@@ -1,8 +1,8 @@
 package com.selvaragavan.agricultureapp.agriculturalProducts;
 
 
+import com.selvaragavan.agricultureapp.address.Address;
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,7 +27,7 @@ public class ProductService {
         return product.getName()+" added successfully";
     }
 
-    public List<Product> getProductsByUserAddress(String address) {
-        return productRepository.findAllByUserAddressContainingIgnoreCase(address);
+    public List<Product> getProductsByUserAddress(Address address) {
+        return productRepository.findAllByUserAddress(address);
     }
 }
