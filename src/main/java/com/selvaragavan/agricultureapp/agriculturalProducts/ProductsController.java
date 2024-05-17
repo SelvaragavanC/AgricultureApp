@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -35,6 +36,8 @@ public class ProductsController {
 
     @PostMapping(path = "/add")
     public ResponseEntity<AddProductResponse> addProduct(@RequestBody Product product) {
+        product.setCreatedAt(LocalDateTime.now());
+        product.setExpiryDate(LocalDateTime.now().plusHours(5));
         return new ResponseEntity<>(AddProductResponse.builder().message(productService.addProduct(product)).build(), HttpStatusCode.valueOf(200));
     }
 }

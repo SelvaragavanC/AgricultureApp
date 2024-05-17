@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -30,8 +31,8 @@ public class Product {
     private String name;
     private String description;
     private int price;
-    private int unit;
+    private String unit;
     private int quantity;
-    private Date createdAt;
-    private Date expiryDate;
+    private LocalDateTime createdAt;
+    private LocalDateTime expiryDate;
 }

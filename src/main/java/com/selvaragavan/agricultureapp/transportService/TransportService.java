@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @Builder
@@ -21,15 +23,16 @@ public class TransportService {
 
     @ManyToOne
     @JoinColumn
-    @JsonIgnoreProperties(value = {"password"})
+    @JsonIgnoreProperties(value = {"password","address"})
     private User user;
 
     private String pricePerKM;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn
-    @JsonIgnoreProperties({"id"})
-    private Address[] addressesAvailable;
+    private List<Address> addressesAvailable;
 
     private String phoneNumber;
+    private long capacity;
 }
+
