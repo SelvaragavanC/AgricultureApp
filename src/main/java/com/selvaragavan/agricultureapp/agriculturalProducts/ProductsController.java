@@ -19,7 +19,7 @@ public class ProductsController {
     private final AddressService addressService;
 
     @GetMapping(path = "/get")
-    public ResponseEntity<List<Product>> getProduct(@RequestParam(value = "name", required = false) String name,@RequestParam(value = "addressId") Integer address) {
+    public ResponseEntity<List<Product>> getProduct(@RequestParam(value = "name", required = false) String name,@RequestParam(value = "addressId", required = false) Integer address) {
         if(address != null){
             return new ResponseEntity<>(productService.getProductsByUserAddress(addressService.getAddressById(address)),HttpStatusCode.valueOf(200));
         }else if (name!=null){

@@ -32,7 +32,7 @@ public class Product {
     private String description;
     private int price;
     private String unit;
-    private int quantity;
+    private long quantity;
     private LocalDateTime createdAt;
     private LocalDateTime expiryDate;
 }

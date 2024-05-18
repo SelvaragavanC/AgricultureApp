@@ -23,6 +23,7 @@ public class OrderController {
 
     @PostMapping("/add")
     public ResponseEntity<OrderResponse> addOrder(@RequestBody Order order) {
+        System.out.println(order);
         order.setDeliveryTime(LocalDateTime.now().plusHours(8));
         return new ResponseEntity<>(orderService.addOrder(order),HttpStatusCode.valueOf(200));
     }

@@ -36,5 +36,7 @@ public class Order {
     @JoinColumn
     private Product product;
 
+    private long quantity;
+
     private LocalDateTime deliveryTime;
 }
